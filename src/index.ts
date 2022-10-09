@@ -1,6 +1,11 @@
 import gsap from "gsap";
-import { Elastic, Bounce } from "gsap";
+import { Elastic, Bounce, Power2 } from "gsap";
 import "./styles.scss";
+
+const w = window.innerWidth;
+const h = window.innerHeight;
+const w2 = w / 2
+const h2 = h / 2
 
 
 function randomInt(min: number, max: number) {
@@ -13,38 +18,28 @@ function randomFloat(min: number, max: number) {
 
 const { body } = document
 
-function createBox(left: number, top: number) {
+function createBox() {
   const boxDOMEl = document.createElement("div");
   boxDOMEl.classList.add("box")
 
   body.appendChild(boxDOMEl)
 
   gsap.set(boxDOMEl, {
-    left,
-    top,
+    scale: 1,
+    left: w2 - 50,
+    top: h2 - 50,
   })
 
-  gsap.to(boxDOMEl, {
+  const tl1 = gsap.timeline().to(".box", {
+    scale: 3,
+    duration: 2,
     delay: 1,
+    rotation: 90,
+    ease: Power2.easeIn
+  }).to(".box", {
+    background: "#9bc1bc",
   })
+
 }
 
-const padding = 120;
-for (let x = 0; x < window.innerWidth; x += padding) {
-  for (let y = 0; y < window.innerHeight; y += padding) {
-    createBox(x, y)
-  }
-}
-
-gsap.to(".box", {
-  delay: 0.2,
-  duration: 2,
-  rotation: 180,
-  scale: 0,
-  background: "black",
-  // To sequence the animations
-  stagger: {
-    from: "random",
-    amount: 1.5
-  }
-})
+createBox()
