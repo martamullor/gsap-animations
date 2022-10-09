@@ -23,7 +23,7 @@ function createBox(left: number, top: number) {
   gsap.to(boxDOMEl, {
     rotate: 90,
     duration: 3,
-    background: "blue",
+    background: "#e94f37",
     xPercent: "+=100",
     // onComplete: () => {
     //   alert("done")
