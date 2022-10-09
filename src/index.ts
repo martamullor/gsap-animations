@@ -7,6 +7,10 @@ function randomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
+function randomFloat(min: number, max: number) {
+  return (Math.random() * (max - min) + min)
+}
+
 const { body } = document
 
 function createBox(left: number, top: number) {
@@ -17,13 +21,14 @@ function createBox(left: number, top: number) {
 
   gsap.set(boxDOMEl, {
     left,
-    top
+    top,
+    scale: randomFloat(0.2, 1.25),
+    background: `rgba(${randomInt(100, 255)}, 0, 0, 1)`
   })
 
   gsap.to(boxDOMEl, {
     rotate: 90,
     duration: 3,
-    background: "#e94f37",
     xPercent: "+=100",
     // onComplete: () => {
     //   alert("done")
