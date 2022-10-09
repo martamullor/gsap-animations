@@ -22,7 +22,6 @@ function createBox(left: number, top: number) {
   gsap.set(boxDOMEl, {
     left,
     top,
-    background: `rgba(${randomInt(100, 255)}, 0, 0, 1)`
   })
 
   gsap.to(boxDOMEl, {
@@ -31,25 +30,21 @@ function createBox(left: number, top: number) {
 }
 
 const padding = 120;
-for (let x = -padding; x < window.innerWidth; x += padding) {
-  for (let y = -padding; y < window.innerHeight; y += padding) {
+for (let x = 0; x < window.innerWidth; x += padding) {
+  for (let y = 0; y < window.innerHeight; y += padding) {
     createBox(x, y)
   }
 }
 
 gsap.to(".box", {
   delay: 0.2,
-  duration: 5,
+  duration: 2,
   rotation: 180,
-  ease: Elastic.easeOut,
-  scale: 0.2,
-  background: "red",
-  repeat: -1,
-  yoyo: true,
+  scale: 0,
+  background: "black",
   // To sequence the animations
   stagger: {
-    amount: 4,
     from: "random",
-    grid: "auto"
+    amount: 1.5
   }
 })
