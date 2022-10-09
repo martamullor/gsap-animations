@@ -34,9 +34,9 @@ function createBox(left: number, top: number) {
   })
 }
 
-const padding = 150;
-for (let x = 0; x < window.innerWidth; x += padding) {
-  for (let y = 0; y < window.innerHeight; y += padding) {
+const padding = 120;
+for (let x = -padding; x < window.innerWidth; x += padding) {
+  for (let y = -padding; y < window.innerHeight; y += padding) {
     createBox(x, y)
   }
 }
