@@ -1,4 +1,5 @@
 import gsap from "gsap";
+import { Elastic, Bounce } from "gsap";
 import "./styles.scss";
 
 
@@ -6,19 +7,36 @@ function randomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-const boxDOMEl = document.createElement("div");
-boxDOMEl.classList.add("box")
-
 const { body } = document
 
-body.appendChild(boxDOMEl)
+function createBox(left: number, top: number) {
+  const boxDOMEl = document.createElement("div");
+  boxDOMEl.classList.add("box")
 
-gsap.to(boxDOMEl, {
-  rotate: 90,
-  duration: 3,
-  background: "green",
-  xPercent: "+=100",
-  onComplete: () => {
-    alert("done")
+  body.appendChild(boxDOMEl)
+
+  gsap.set(boxDOMEl, {
+    left,
+    top
+  })
+
+  gsap.to(boxDOMEl, {
+    rotate: 90,
+    duration: 3,
+    background: "blue",
+    xPercent: "+=100",
+    // onComplete: () => {
+    //   alert("done")
+    // }, 
+    delay: 1,
+    /* GreenSock visualizer https://greensock.com/ease-visualizer/ */
+    ease: Bounce.easeInOut
+  })
+}
+
+const padding = 150;
+for (let x = 0; x < window.innerWidth; x += padding) {
+  for (let y = 0; y < window.innerHeight; y += padding) {
+    createBox(x, y)
   }
-})
+}
