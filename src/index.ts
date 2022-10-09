@@ -15,12 +15,12 @@ const tl = gsap
   .to(".box.b", {
     left: "100vw",
     duration: 2,
-    // scale: 2
+    scale: 1.5
     // rotation: 180
   })
   .to(".box.c", {
     // left: "100vw",
-    duration: 1,
+    duration: 3,
     opacity: 0
   });
 
@@ -28,7 +28,7 @@ ScrollTrigger.create({
   animation: tl,
   trigger: "#container",
   start: "top top",
-  end: "+=20000",
+  end: "+=10000",
   scrub: true,
   pin: true,
   markers: true
