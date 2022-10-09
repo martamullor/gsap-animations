@@ -30,16 +30,31 @@ function createBox() {
     top: h2 - 50,
   })
 
-  const tl1 = gsap.timeline().to(".box", {
+  const labels = {
+    toYellow: "toYellow",
+    fadeout: "fadeout"
+  }
+
+  const tl1 = gsap.timeline()
+  // .timeScale(3)
+  .to(".box", {
     scale: 3,
     duration: 2,
     delay: 1,
     rotation: 90,
     ease: Power2.easeIn
-  }).to(".box", {
+  })
+  .addLabel(labels.toYellow)
+  .to(".box", {
     background: "#9bc1bc",
   })
+  .addLabel(labels.fadeout)
+  .to(".box", {
+    opacity: 0,
+    delay: 1
+  })
 
+  // tl1.seek(labels.toYellow)
 }
 
 createBox()
