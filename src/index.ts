@@ -16,7 +16,7 @@ const tl = gsap
     left: "100vw",
     duration: 2,
     // scale: 2
-    rotation: 180
+    // rotation: 180
   })
   .to(".box.c", {
     // left: "100vw",
