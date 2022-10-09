@@ -22,20 +22,11 @@ function createBox(left: number, top: number) {
   gsap.set(boxDOMEl, {
     left,
     top,
-    scale: randomFloat(0.2, 1.25),
     background: `rgba(${randomInt(100, 255)}, 0, 0, 1)`
   })
 
   gsap.to(boxDOMEl, {
-    rotate: 90,
-    duration: 3,
-    xPercent: "+=100",
-    // onComplete: () => {
-    //   alert("done")
-    // }, 
     delay: 1,
-    /* GreenSock visualizer https://greensock.com/ease-visualizer/ */
-    ease: Bounce.easeInOut
   })
 }
 
@@ -45,3 +36,20 @@ for (let x = -padding; x < window.innerWidth; x += padding) {
     createBox(x, y)
   }
 }
+
+gsap.to(".box", {
+  delay: 0.2,
+  duration: 5,
+  rotation: 180,
+  ease: Elastic.easeOut,
+  scale: 0.2,
+  background: "red",
+  repeat: -1,
+  yoyo: true,
+  // To sequence the animations
+  stagger: {
+    amount: 4,
+    from: "random",
+    grid: "auto"
+  }
+})
