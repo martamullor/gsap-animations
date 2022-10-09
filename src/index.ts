@@ -1,35 +1,24 @@
+import gsap from "gsap";
 import "./styles.scss";
 
-import { Elastic } from "gsap/all";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { gsap } from "gsap";
 
-gsap.registerPlugin(ScrollTrigger);
+function randomInt(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
 
-const tl = gsap
-  .timeline()
-  .to(".box.a", {
-    top: "-100vh",
-    duration: 1
-  })
-  .to(".box.b", {
-    left: "100vw",
-    duration: 2,
-    // scale: 2
-    rotation: 180
-  })
-  .to(".box.c", {
-    // left: "100vw",
-    duration: 1,
-    opacity: 0
-  });
+const boxDOMEl = document.createElement("div");
+boxDOMEl.classList.add("box")
 
-ScrollTrigger.create({
-  animation: tl,
-  trigger: "#container",
-  start: "top top",
-  end: "+=20000",
-  scrub: true,
-  pin: true,
-  markers: true
-});
+const { body } = document
+
+body.appendChild(boxDOMEl)
+
+gsap.to(boxDOMEl, {
+  rotate: 90,
+  duration: 3,
+  background: "green",
+  xPercent: "+=100",
+  onComplete: () => {
+    alert("done")
+  }
+})
