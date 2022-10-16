@@ -13,6 +13,7 @@ function randomFloat(min: number, max: number) {
 
 const { body } = document
 
+
 function createBox(left: number, top: number) {
   const boxDOMEl = document.createElement("div");
   boxDOMEl.classList.add("box")
@@ -22,7 +23,7 @@ function createBox(left: number, top: number) {
   gsap.set(boxDOMEl, {
     left,
     top,
-    background: `rgba(${randomInt(100, 255)}, 0, 0, 1)`
+    background: `rgba(${randomInt(131, 197)}, 190, 1)`
   })
 
   gsap.to(boxDOMEl, {
